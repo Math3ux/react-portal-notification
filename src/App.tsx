@@ -1,13 +1,25 @@
 import './App.css'
+import { useState } from 'react';
+import { Notification } from './Components/Notification';
 
-function App() {
+const App = () => {
+  const [showNotification, setShowNotification] = useState(false);
 
   return (
-    <>
-      <h1>Hello World</h1>
-      <h2>From Brazil</h2>
-    </>
-  )
-}
+    <div>
+      <button onClick={() => setShowNotification(true)}>
+        Mostrar Notificação
+      </button>
+
+      {showNotification && (
+        <Notification
+          message="Notificação exibida com sucesso!"
+          onClose={() => setShowNotification(false)}
+        />
+      )}
+    </div>
+  );
+};
+
 
 export default App
